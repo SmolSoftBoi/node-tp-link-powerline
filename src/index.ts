@@ -1,0 +1,1 @@
+export { TpPlc } from './tpPlc';
