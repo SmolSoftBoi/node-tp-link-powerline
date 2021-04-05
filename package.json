@@ -14,7 +14,7 @@
   "author": "Kristian Matthews <kristian.matthews@me.com>",
   "scripts": {
     "lint": "eslint src/**.ts --max-warnings=0",
-    "watch": "npm run build && npm link && nodemon",
+    "watch": "yarn run build && yarn link && nodemon",
     "build": "rimraf ./dist && tsc",
     "prepublishOnly": "yarn run lint && yarn run build"
   },
