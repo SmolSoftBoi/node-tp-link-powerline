@@ -25,6 +25,21 @@ export class Powerline extends EventEmitter {
 
         this.client = new Client(`http://${device.ip}`);
     }
+    
+    /** Get Name */
+    get name(): string {
+        return this.device.name;
+    }
+
+    /** Get Mac */
+    get mac(): string {
+        return this.device.mac;
+    }
+
+    /** Get IP Address */
+    get ipAddress(): string {
+        return this.device.ip;
+    }
 
     /** Ping */
     async ping(): Promise<void> {
