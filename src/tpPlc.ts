@@ -17,6 +17,15 @@ export class TpPlc extends EventEmitter {
     /** Devices */
     private devices: Record<string, Devices.Powerline> = {};
 
+    /**
+     * On
+     * @param event Event.
+     * @param listener Listener.
+     */
+    on(event: 'found', listener: (arg: Devices.Powerline) => void): this {
+        return super.on(event, listener);
+    }
+
     /** Get Devices */
     async getDevices(): Promise<void> {
         const socket = createSocket('udp4');
