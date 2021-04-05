@@ -6,7 +6,7 @@ import { Logger } from '@epickris/node-logger';
 import * as Devices from "./devices";
 import * as Events from "./events";
 
-import find from 'local-devices';
+import find, { IDevice } from 'local-devices';
 
 /** Log */
 const log = new Logger();
@@ -41,7 +41,7 @@ export class TpPlc extends EventEmitter {
         });
 
         socket.on('message', async (_message, remoteInfo) => {
-            const device = (await find(remoteInfo.address))[0];
+            const device = (await find(remoteInfo.address)) as unknown as IDevice;
             this.devices[device.mac] = new Devices.Powerline(device);
             this.emit(Events.FOUND, this.devices[device.mac]);
         });
