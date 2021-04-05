@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events';
 
 import { Logger } from '@epickris/node-logger';
+import { IDevice } from 'local-devices';
 import ping from 'ping';
 
 import { Client } from '../client';
@@ -15,25 +16,25 @@ export class Powerline extends EventEmitter {
     private client: Client;
 
     /**
-     * @param ipAddress IP Address
+     * @param device Device
      */
     constructor(
-        protected readonly ipAddress: string
+        protected readonly device: IDevice
     ) {
         super();
 
-        this.client = new Client(`http://${ipAddress}`);
+        this.client = new Client(`http://${device.ip}`);
     }
 
     /** Ping */
     async ping(): Promise<void> {
         const promise = new Promise<void>((resolve, reject) => {
             try {
-                ping.promise.probe(this.ipAddress);
+                ping.promise.probe(this.device.ip);
                 resolve();
             } catch (error) {
                 log.error(error);
-                
+
                 reject(error);
             }
         });

@@ -33,7 +33,7 @@ export class TpPlc extends EventEmitter {
 
         socket.on('message', async (_message, remoteInfo) => {
             const device = (await find(remoteInfo.address))[0];
-            this.devices[device.mac] = new Devices.Powerline(device.ip);
+            this.devices[device.mac] = new Devices.Powerline(device);
             this.emit(Events.FOUND, this.devices[device.mac]);
         });
 
