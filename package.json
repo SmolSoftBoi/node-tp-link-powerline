@@ -1,7 +1,7 @@
 {
   "name": "node-tp-link-powerline",
-  "version": "0.0.4",
-  "betaVersion": "0.0.4",
+  "version": "0.1.1",
+  "betaVersion": "0.1.1",
   "description": "API to interact with TP-Link powerline devices.",
   "main": "dist/index.js",
   "repository": {
