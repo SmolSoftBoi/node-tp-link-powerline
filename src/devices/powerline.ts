@@ -42,11 +42,12 @@ export class Powerline extends EventEmitter {
     }
 
     /** Ping */
-    async ping(): Promise<void> {
-        const promise = new Promise<void>((resolve, reject) => {
+    async ping(): Promise<boolean> {
+        const promise = new Promise<boolean>(async (resolve, reject) => {
             try {
-                ping.promise.probe(this.device.ip);
-                resolve();
+                const probe = await ping.promise.probe(this.device.ip);
+
+                resolve(probe.alive);
             } catch (error) {
                 log.error(error);
 
