@@ -49,7 +49,7 @@ export class Powerline extends EventEmitter {
 
                 resolve(probe.alive);
             } catch (error) {
-                log.error(error);
+                log.error(error instanceof Error ? error.message : String(error));
 
                 reject(error);
             }
